@@ -15,6 +15,7 @@ caddy_install(){
     wget -O /etc/systemd/system/caddy.service $sercaddy
     chmod 777 /usr/local/bin/caddy
     #添加自启动
-    systemctl enable caddy && systemctl restart caddy 
+    systemctl enable caddy && systemctl restart caddy
 }
+
 
