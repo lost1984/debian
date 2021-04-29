@@ -1,7 +1,5 @@
-
 # 按照需要用的软件
-apt update 
-apt install -y curl  wegt
+apt update && apt install -y curl wget
 bincaddy=${bincaddy:-https://raw.githubusercontent.com/lost1984/debian/master/caddy/bin/caddy}
 configcaddy=${configcaddy:-https://raw.githubusercontent.com/lost1984/debian/master/caddy/etc/Caddyfile}
 sercaddy=${sercaddy:-https://raw.githubusercontent.com/lost1984/debian/master/caddy/etc/caddy.service}
