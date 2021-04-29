@@ -6,7 +6,7 @@ Wants=network.target
 [Service]
 Type=simple
 PIDFile=/var/run/caddy.pid
-ExecStart=/usr/local/bin/caddy -conf=/usr/local/etc/caddy/Caddyfile
+ExecStart=/usr/local/bin/caddy -conf=/usr/local/etc/caddy/caddy.json
 RestartPreventExitStatus=23
 Restart=always
 User=root
