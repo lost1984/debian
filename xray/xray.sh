@@ -4,7 +4,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin; export 
 # tempfile & rm it when exit
 trap 'rm -f "$TMPFILE"' EXIT; TMPFILE=$(mktemp) || exit 1
 
-domain="$2
+domain=$2
 configxray=${configxray:-https://raw.githubusercontent.com/lost1984/debian/main/xray/etc/xray.json}
 configcaddy=${configcaddy:-https://raw.githubusercontent.com/lost1984/debian/main/xray/etc/caddy.json}
 
@@ -29,7 +29,7 @@ function cert_acme(){
     apt install socat -y
     curl https://get.acme.sh | sh && source  ~/.bashrc
     ~/.acme.sh/acme.sh --upgrade --auto-upgrade
-    ~/.acme.sh/acme.sh --issue -d $domain --standalone --keylength ec-256 --pre-hook "systemctl stop caddy xray" --post-hook "~/.acme.sh/acme.sh --installcert -d $domain --ecc --fullchain-file /usr/local/etc/xray/$domain.crt --key-file /usr/local/etc/xray/$domain.key --reloadcmd \"systemctl restart caddy xray\""
+    ~/.acme.sh/acme.sh --issue -d $domain --standalone --keylength ec-256 --pre-hook "systemctl stop caddy xray" --post-hook "~/.acme.sh/acme.sh --installcert -d $domain --ecc --fullchain-file /usr/local/etc/xray/$domain.crt --key-file /usr/local/etc/xray/$domain.key --reloadcmd \"systemctl restart caddy xray\"
     ~/.acme.sh/acme.sh --installcert -d $domain --ecc --fullchain-file /usr/local/etc/xray/my.crt --key-file /usr/local/etc/xray/my.key --reloadcmd "systemctl restart xray"
 }
 
