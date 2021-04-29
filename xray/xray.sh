@@ -5,8 +5,8 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin; export 
 trap 'rm -f "$TMPFILE"' EXIT; TMPFILE=$(mktemp) || exit 1
 
 domain="$2
-configxray=${configxray:-https://raw.githubusercontent.com/lost1984/debian/master/xray/etc/xray.json}
-configcaddy=${configcaddy:-https://raw.githubusercontent.com/lost1984/debian/master/xray/etc/caddy.json}
+configxray=${configxray:-https://raw.githubusercontent.com/lost1984/debian/main/xray/etc/xray.json}
+configcaddy=${configcaddy:-https://raw.githubusercontent.com/lost1984/debian/main/xray/etc/caddy.json}
 
 ########
 
@@ -22,7 +22,7 @@ function config_xray_caddy(){
     # xrayconfig
     wget -O /usr/local/etc/xray/config.json $configxray
     # caddyconfig
-    wget -O /usr/local/etc/caddy/Caddyfile $configcaddy
+    wget -O /usr/local/etc/caddy/caddy.json $configcaddy
 }
 
 function cert_acme(){

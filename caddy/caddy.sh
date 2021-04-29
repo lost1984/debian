@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin; export PATH
 # 设置变量
@@ -11,4 +12,3 @@ wget -O /usr/local/etc/caddy/caddy.json $configcaddy
  chmod 777 /usr/local/bin/caddy
 #添加自启动
 systemctl enable caddy && systemctl restart caddy
-
