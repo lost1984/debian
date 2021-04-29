@@ -14,5 +14,3 @@ caddy_install(){
     #添加自启动
     systemctl enable caddy && systemctl restart caddy
 }
-
-
