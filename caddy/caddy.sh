@@ -1,8 +1,8 @@
 
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin; export PATH
-# 安装需要用的软件
-apt update && apt install -y curl wget
+# 设置变量
+
 bincaddy=${bincaddy:-https://raw.githubusercontent.com/lost1984/debian/master/caddy/bin/caddy}
 configcaddy=${configcaddy:-https://raw.githubusercontent.com/lost1984/debian/master/caddy/etc/Caddyfile}
 sercaddy=${sercaddy:-https://raw.githubusercontent.com/lost1984/debian/master/caddy/etc/caddy.service}
