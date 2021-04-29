@@ -37,7 +37,7 @@ function start_info(){
     systemctl enable caddy xray && systemctl restart caddy xray && sleep 3 && systemctl status caddy xray | grep -A 2 "service"
 }
 
-main
+
 
 function main(){
    
@@ -46,3 +46,5 @@ function main(){
     cert_acme
     start_info
 }
+
+main
