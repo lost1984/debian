@@ -29,17 +29,14 @@ function cert_acme(){
     apt install socat -y
     curl https://get.acme.sh | sh && source  ~/.bashrc
     ~/.acme.sh/acme.sh --upgrade --auto-upgrade
-    ~/.acme.sh/acme.sh --issue -d $domain --standalone --keylength ec-256 --pre-hook "systemctl stop caddy xray" --post-hook "~/.acme.sh/acme.sh --installcert -d $domain --ecc --fullchain-file /usr/local/etc/xray/$domain.crt --key-file /usr/local/etc/xray/$domain.key --reloadcmd \"systemctl restart caddy xray\"
+    ~/.acme.sh/acme.sh --issue -d $domain --standalone --keylength ec-256 --pre-hook "systemctl stop caddy xray" --post-hook "~/.acme.sh/acme.sh --installcert -d $domain --ecc --fullchain-file /usr/local/etc/xray/my.crt --key-file /usr/local/etc/xray/my.key --reloadcmd \"systemctl restart caddy xray\""
     ~/.acme.sh/acme.sh --installcert -d $domain --ecc --fullchain-file /usr/local/etc/xray/my.crt --key-file /usr/local/etc/xray/my.key --reloadcmd "systemctl restart xray"
 }
 
 function start_info(){
-    systemctl enable caddy xray 
-	systemctl restart caddy xray 
-	sleep 3 
-	systemctl status caddy xray 
+    systemctl enable caddy xray && systemctl restart caddy xray && sleep 3 && systemctl status caddy xray | grep -A 2 "service"
+ 
 }
-
 
 function main(){
     install_xray_caddy
