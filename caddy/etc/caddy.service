@@ -1,0 +1,14 @@
+[Unit]
+Description=Caddy server
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/caddy.pid
+ExecStart=/usr/local/bin/caddy -conf=/usr/local/etc/caddy/Caddyfile
+RestartPreventExitStatus=23
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
