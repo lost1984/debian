@@ -14,7 +14,7 @@ function install_xray_caddy(){
     # xray
     bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
     # caddy -V1
-    bash -c "$(curl -L https://github.com/lost1984/caddy.sh)"
+    bash -c "$(curl -L https://raw.githubusercontent.com/lost1984/debian/main/caddy/caddy.sh)"
 }
 
 
@@ -34,17 +34,17 @@ function cert_acme(){
 }
 
 function start_info(){
-    systemctl enable caddy xray && systemctl restart caddy xray && sleep 3 && systemctl status caddy xray | grep -A 2 "service"
+    systemctl enable caddy xray 
+	systemctl restart caddy xray 
+	sleep 3 
+	systemctl status caddy xray 
 }
 
 
-
 function main(){
-   
     install_xray_caddy
     config_xray_caddy
     cert_acme
     start_info
 }
-
 main
